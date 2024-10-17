@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # profiling
 # zmodload zsh/zprof
@@ -11,10 +11,12 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
+export FPATH="$FPATH:$(brew --prefix)/share/zsh/functions:$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/share/zsh-completions"
 export ZSH="$HOME/.oh-my-zsh"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+# source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $(brew --prefix)/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -85,34 +87,13 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # lsmple format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  macos
-  tmux
-  # web-search
   fzf
   fzf-tab
   colorize
-  nvm
-  node
-  npm
   vi-mode
-  # docker
-  # pip
-  # django
-  # git-extras
-  # httpie
-  # jsontools
-  # history
-  # python
-  # zsh-syntax-highlighting
-  # kubectl
-  # pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# Toggle fzf-tab
-toggle-fzf-tab
 
 # User configuration
 
@@ -176,13 +157,13 @@ export PATH="$(pyenv root)/shims:$PATH"
 export PYENV_ROOT=/Users/stanislawmadalinskipietka/.pyenv 
 
 # extra libs Smarnic
-export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/openssl/lib:$DYLD_LIBRARY_PATH
-export DYLD_FALLBACK_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/openssl/lib:$DYLD_FALLBACK_LIBRARY_PATH
-
-export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/libdnet/lib:$DYLD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/libpcap/lib:$DYLD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/zeromq/lib:$DYLD_LIBRARY_PATH
-export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
+# export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/openssl/lib:$DYLD_LIBRARY_PATH
+# export DYLD_FALLBACK_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/openssl/lib:$DYLD_FALLBACK_LIBRARY_PATH
+#
+# export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/libdnet/lib:$DYLD_LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/libpcap/lib:$DYLD_LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/zeromq/lib:$DYLD_LIBRARY_PATH
+# export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
 
 ## Jenkins API
 # export JENKINS_URL=https://jenkins.smartnic.codilime.com
@@ -226,8 +207,8 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source $(brew --prefix)/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source $(brew --prefix)/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ## FZF
 # disable sort when completing `git checkout`
@@ -245,8 +226,11 @@ zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
 zstyle ':fzf-tab:*' fzf-min-height 25
 enable-fzf-tab
 
+# Nvm configuration
+zstyle ':omz:plugins:nvm' autoload yes
+
 # Node configuration
-export NVM_DIR="$HOME/.nvm"
+ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # place this after nvm initialization!
@@ -276,3 +260,6 @@ eval "$(op completion zsh)"; compdef _op op
 
 # bind additional keys
 bindkey -s ^f "tmux-sessionizer\n"
+
+#starship prompts
+eval "$(starship init zsh)"
