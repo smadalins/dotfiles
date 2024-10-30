@@ -142,6 +142,8 @@ alias ls='eza --icons=always'
 # alias lt='eza --tree --level=2' # tree
 eval "$(zoxide init zsh)"
 alias cd='z'
+# ssh
+alias ssh='TERM=xterm-256color ssh'
 
 # Local exports
 export PROJECT_HOME=~/Projects

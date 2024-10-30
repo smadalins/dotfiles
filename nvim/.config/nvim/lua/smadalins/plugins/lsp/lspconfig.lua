@@ -44,7 +44,7 @@ return {
       keymap.set("n", "<leader>D", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
 
       opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", "Lspsaga show_line_diagnostics", opts)
+      keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
       opts.desc = "Go to previous diagnostic"
       keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
