@@ -55,9 +55,14 @@ opt.swapfile = false
 
 -- python provider
 local function system(command)
-  local file = assert(io.popen(command, 'r'))
-  local output = file:read('*all'):gsub("%s+", "")
+  local file = assert(io.popen(command, "r"))
+  local output = file:read("*all"):gsub("%s+", "")
   file:close()
   return output
 end
-vim.g.python3_host_prog = system('which /Users/stanislawmadalinskipietka/.pyenv/versions/3.12.1/bin/python')
+vim.g.python3_host_prog = system("which /Users/stanislawmadalinskipietka/.pyenv/versions/3.12.1/bin/python")
+
+-- fix diagnostics don't show up
+vim.diagnostic.config({
+  severity_sort = true,
+})
