@@ -161,7 +161,7 @@ export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH" # add posix grep
 
 # Pyenv
 export PATH="$(pyenv root)/shims:$PATH"
-export PYENV_ROOT=/Users/stanislawmadalinskipietka/.pyenv 
+export PYENV_ROOT=~/.pyenv
 
 # extra libs Smarnic
 # export DYLD_LIBRARY_PATH=$HOMEBREW_PREFIX/opt/openssl/lib:$DYLD_LIBRARY_PATH
@@ -193,7 +193,7 @@ export PYENV_ROOT=/Users/stanislawmadalinskipietka/.pyenv
 ## Settings
 # ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 #ZSH_THEME="avit".
-DEFAULT_USER=stanislawmadalinskipietka
+DEFAULT_USER=$USER
 
 # History
 HISTFILE="$HOME/.zsh_history"
