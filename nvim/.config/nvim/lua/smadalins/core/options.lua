@@ -8,6 +8,9 @@ opt.shell = "zsh"
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
+-- scrolloff
+opt.scrolloff = 999
+
 -- tabs & indentation
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -16,7 +19,7 @@ opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-opt.wrap = true -- disable line wrapping
+opt.wrap = true
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -60,7 +63,7 @@ local function system(command)
   file:close()
   return output
 end
-vim.g.python3_host_prog = system("which /Users/stanislawmadalinskipietka/.pyenv/versions/3.12.1/bin/python")
+vim.g.python3_host_prog = system("which ~/.pyenv/versions/3.13.2/bin/python")
 
 -- fix diagnostics don't show up
 vim.diagnostic.config({

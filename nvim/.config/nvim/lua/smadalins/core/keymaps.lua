@@ -51,6 +51,10 @@ keymap.set("n", "J", "mzJx`z")
 -- keep in the middle
 keymap.set("n", "n", "nzzzv") -- search
 keymap.set("n", "N", "Nzzzv")
+keymap.set("n", "*", "*zzzv") -- search
+keymap.set("n", "#", "#zzzv")
+keymap.set("n", "g*", "g*zzzv") -- search
+keymap.set("n", "g#", "g#zzzv")
 keymap.set("n", "<C-d>", "<C-d>zz") -- up/down
 keymap.set("n", "<C-u>", "<C-u>zz")
 
